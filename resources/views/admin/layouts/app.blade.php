@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
@@ -151,6 +151,10 @@
   <!--script src="/stisla/node_modules/sweetalert/dist/sweetalert.min.js"></script-->
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="/stisla/node_modules/izitoast/dist/js/iziToast.min.js"></script>
+
+  <!-- summer note -->
+  <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
 
   <!-- Template JS File -->
   <script src="/stisla/assets/js/scripts.js"></script>
