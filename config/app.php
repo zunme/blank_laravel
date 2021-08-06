@@ -177,6 +177,8 @@ return [
 
         /*추가*/
         App\Providers\ComposerServiceProvider::class,
+        Yajra\DataTables\DataTablesServiceProvider::class,
+        Shetabit\Visitor\Provider\VisitorServiceProvider::class,
     ],
 
     /*
@@ -230,7 +232,8 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-
+        'DataTables' => Yajra\DataTables\Facades\DataTables::class,
+        'Visitor' => Shetabit\Visitor\Facade\Visitor::class,
     ],
 
 ];
