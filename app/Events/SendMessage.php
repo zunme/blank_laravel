@@ -19,8 +19,10 @@ class SendMessage implements ShouldBroadcastNow{
      *
      * @return void
      */
-    public function __construct(){
+    private $data;
+    public function __construct($data){
         //
+        $this->data = $data;
     }
 
     // Client단에서 브로드캐스트 실시간 서비스를 받을 채널명
@@ -30,6 +32,9 @@ class SendMessage implements ShouldBroadcastNow{
 
     //채널을 수신할때 받을 데이터
     public function broadcastWith(){
-        return ['title'=>'번째 데이터'];
+        return [
+            'title'=>'번째 데이터',
+            'data'=>$this->data
+        ];
     }
 }

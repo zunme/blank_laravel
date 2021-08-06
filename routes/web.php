@@ -18,7 +18,8 @@ Route::get('/', function () {
 });
 
 Route::get('/t', function () {
-    event(new \App\Events\SendMessage());
+    $data = ['data'=>[]];
+    event(new \App\Events\SendMessage($data));
     dd('Event Run Successfully.');
 });
 
