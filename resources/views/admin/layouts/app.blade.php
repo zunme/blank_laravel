@@ -122,7 +122,7 @@
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
   </form>
 
-  <div class="modal fade" id="defaultModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="defaultModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content" id="modal_default_body">
 
@@ -130,6 +130,27 @@
   </div>
 </div>
 
+<div class="modal fade" id="smModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content" id="modal_sm_body">
+
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="lgModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content" id="modal_lg_body">
+
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="xlModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl" role="document">
+    <div class="modal-content" id="modal_xl_body">
+
+    </div>
+  </div>
+</div>
   <!-- General JS Scripts -->
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
@@ -266,9 +287,9 @@ function pop_tpl( size, id , data, title ){
   if ( !availsize.includes(size) ) size='default';
 
   var template = Handlebars.compile( $( "#"+id ).html() );
-  $("#modal_default_body" ).html ( template(data) );
-  $( "#defaultModal" ).modal('handleUpdate')
-  $( "#defaultModal" ).modal('show')
+  $("#modal_"+size+"_body" ).html ( template(data) );
+  $( "#"+size+"Modal" ).modal('handleUpdate')
+  $( "#"+size+"Modal" ).modal('show')
 }
 </script>
 @yield('script')
