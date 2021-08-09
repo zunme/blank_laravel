@@ -19,6 +19,9 @@
   <!-- Template CSS -->
   <link rel="stylesheet" href="/stisla/assets/css/style.css">
   <link rel="stylesheet" href="/stisla/assets/css/components.css">
+
+  <link rel="stylesheet" href="/stisla/node_modules/bootstrap-daterangepicker/daterangepicker.css">
+
   <style>
   div.dataTables_wrapper div.dataTables_length select {
     width: 66px;
@@ -122,7 +125,7 @@
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
   </form>
 
-<div class="modal fade" id="defaultModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="defaultModal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content" id="modal_default_body">
 
@@ -130,21 +133,21 @@
   </div>
 </div>
 
-<div class="modal fade" id="smModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="smModal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-sm" role="document">
     <div class="modal-content" id="modal_sm_body">
 
     </div>
   </div>
 </div>
-<div class="modal fade" id="lgModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="lgModal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content" id="modal_lg_body">
 
     </div>
   </div>
 </div>
-<div class="modal fade" id="xlModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="xlModal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-xl" role="document">
     <div class="modal-content" id="modal_xl_body">
 
@@ -180,6 +183,8 @@
   <!-- Template JS File -->
   <script src="/stisla/assets/js/scripts.js"></script>
   <script src="/stisla/assets/js/custom.js"></script>
+
+  <script src="/stisla/node_modules/bootstrap-daterangepicker/daterangepicker.js"></script>
 
 <!-- echo -->
 <script>
@@ -290,6 +295,14 @@ function pop_tpl( size, id , data, title ){
   $("#modal_"+size+"_body" ).html ( template(data) );
   $( "#"+size+"Modal" ).modal('handleUpdate')
   $( "#"+size+"Modal" ).modal('show')
+  if($(".datetimepicker").length) {
+    $('.datetimepicker').daterangepicker({
+        locale: {format: 'YYYY-MM-DD hh:mm'},
+        singleDatePicker: true,
+        timePicker: true,
+        timePicker24Hour: true,
+      });
+  }
 }
 </script>
 @yield('script')
