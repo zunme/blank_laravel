@@ -169,6 +169,7 @@
 <script src="{{ asset('js/laravelecho.js') }}" defer></script>
       
 <script type="text/javascript">
+  console.log ( "ready")
     document.addEventListener("DOMContentLoaded", function(){
         var i = 0;
         //App\Events\SendMessage에 정의되어있는 수신받을 채널명.
@@ -180,7 +181,9 @@
         	console.log(data);
         });
     });
+    
 </script>
+
 
   <!-- Page Specific JS File -->
 <script>

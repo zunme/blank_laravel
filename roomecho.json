@@ -1,0 +1,5 @@
+{
+  "name": "roomecho",
+  "script": "laravel-echo-server",
+  "args": "start"
+}
