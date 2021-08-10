@@ -14,10 +14,14 @@ class AdminMenuComposer
         // 메뉴 설정 {
         $common = [
             [
-                'nav_title' => 'Dashboard',
                 'title' => 'Dashboard',
                 'url' => route('adm.home', null, false),
             ],
+            [
+                'nav_title' => 'User',
+                'title' => 'User List',
+                'url' => route('adm.user', null, false),
+            ],            
             [
                 'title' => 'submenu',
                 'sub'=>[

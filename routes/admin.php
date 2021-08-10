@@ -15,7 +15,7 @@ Route::group([
     });
     Route::get('home', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('home');
 
-    Route::get('user', [App\Http\Controllers\Admin\UserController::class, 'index'])->name('rooms');
+    Route::get('user', [App\Http\Controllers\Admin\UserController::class, 'index'])->name('user');
     Route::get('user/list', [App\Http\Controllers\Admin\UserController::class, 'list']);
     Route::post('user/save', [App\Http\Controllers\Admin\UserController::class, 'save']);
 

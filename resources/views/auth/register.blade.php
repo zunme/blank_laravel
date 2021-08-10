@@ -12,6 +12,20 @@
                         @csrf
 
                         <div class="form-group row">
+                            <label for="user_id" class="col-md-4 col-form-label text-md-right">{{ __('User ID') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="user_id" type="text" class="form-control @error('user_id') is-invalid @enderror" name="user_id" value="{{ old('user_id') }}" required autocomplete="email">
+
+                                @error('user_id')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
                             <div class="col-md-6">
@@ -43,7 +57,7 @@
                             <label for="tel" class="col-md-4 col-form-label text-md-right">{{ __('Phone') }}</label>
 
                             <div class="col-md-6">
-                                <input id="tel" type="number" class="form-control @error('tel') is-invalid @enderror" name="tel" value="{{ old('tel') }}" required autocomplete="tel">
+                                <input id="tel" type="phone" class="form-control @error('tel') is-invalid @enderror" name="tel" value="{{ old('tel') }}" required autocomplete="tel">
 
                                 @error('tel')
                                     <span class="invalid-feedback" role="alert">
@@ -53,6 +67,40 @@
                             </div>
                         </div>
 
+                        <div class="form-group row">
+                            <label for="recommender" class="col-md-4 col-form-label text-md-right">{{ __('추천인') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="recommender" type="text" class="form-control @error('recommender') is-invalid @enderror" name="recommender" value="{{ old('recommender') }}" >
+
+                                @error('recommender')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-group row">
+                            <label for="national" class="col-md-4 col-form-label text-md-right">{{ __('국가') }}</label>
+
+                            <div class="col-md-6">
+                                <select id="national" class="form-control @error('national') is-invalid @enderror" name="national" required autocomplete="national" >
+                                    <option value="">국가를 선택해주세요</optional>
+                                    @foreach ($langs as $code=>$lang)
+                                    <option value="{{$code}}">{{$lang['label']}}</optional>
+                                    @endforeach
+                                </select>
+
+                                @error('national')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
 
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>

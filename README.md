@@ -16,6 +16,9 @@
         resource/js/laravelecho.js
         채널명 확인 필요
 
+    pm2
+        pm2 start roomecho.json
+        
 # datatable
     https://github.com/yajra/laravel-datatables
 
