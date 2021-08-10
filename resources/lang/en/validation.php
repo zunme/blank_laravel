@@ -151,6 +151,18 @@ return [
     |
     */
 
-    'attributes' => [],
-
+    'attributes' => [
+        'num_of_rooms'=>'방갯수',
+        'member_per_room'=>'입장인원',
+        'num_of_winners'=>'당첨인원',
+        'admission_fee'=>'입장료',
+        'cancellation_fee'=>'취소수수료',
+        'winnings'=>'당첨금',
+        'marketing_allowance'=>'마케팅수당',
+        'plan_allowance'=>'플랜수당',
+        'interval_min'=>'시간',
+        'next_game_at'=>'다음회차시작시간',
+        'is_use'=>'사용여부',
+    ],
+    
 ];

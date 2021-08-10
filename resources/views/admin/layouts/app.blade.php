@@ -213,6 +213,37 @@
 
   <!-- Page Specific JS File -->
 <script>
+  Handlebars.registerHelper('encodeMyString',function(inputData){
+      return new Handlebars.SafeString(inputData);
+  });
+  Handlebars.registerHelper('isEqual', function (expectedValue, value) {
+    return value === expectedValue;
+  });
+  Handlebars.registerHelper('isNotEqual', function (expectedValue, value) {
+    return value !== expectedValue;
+  });
+  Handlebars.registerHelper('checkempty', function(value) {
+      if ( typeof value == 'undefined') return true;
+      if (value === null) return true;
+      else if (value === '') return true;
+      else return false;
+  });
+  Handlebars.registerHelper('gt', function(a, b) {
+    return (a > b);
+  });
+  Handlebars.registerHelper('gte', function(a, b) {
+    return (a >= b);
+  });
+  Handlebars.registerHelper('lt', function(a, b) {
+    return (a < b);
+  });
+  Handlebars.registerHelper('lte', function(a, b) {
+    return (a <= b);
+  });
+  Handlebars.registerHelper('ne', function(a, b) {
+    return (a !== b);
+  });
+
  moment.locale("ko");
  var datatable_lang_kor = {
         "decimal" : "",
@@ -297,13 +328,111 @@ function pop_tpl( size, id , data, title ){
   $( "#"+size+"Modal" ).modal('show')
   if($(".datetimepicker").length) {
     $('.datetimepicker').daterangepicker({
-        locale: {format: 'YYYY-MM-DD hh:mm'},
+        locale: {format: 'YYYY-MM-DD HH:mm'},
         singleDatePicker: true,
         timePicker: true,
         timePicker24Hour: true,
       });
   }
 }
+// onClick="default_form_prc({'form':'updateform', 'url':'/adm/rooms/save','reload':datatable})" 
+function default_form_prc(info) {
+  var msg = ( typeof info.msg =='undefined') ? '정상적으로 처리되었습니다.' : info.msg;
+  $.ajax({
+    url : '/adm/refresh',
+    method:"get",
+    dataType:'JSON',
+    success:function(result){
+      $('meta[name="csrf-token"]').attr('content', result.token);
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': result.token
+            }
+        });
+
+        $.ajax({
+          url:info.url,
+          method:"POST",
+          data:new FormData( document.getElementById(info.form) ),
+          dataType:'JSON',
+          contentType: false,
+          cache: false,
+          processData: false,
+          success:function(res)
+          {
+            if( res.result =='error'){
+              iziToast.success({
+                message: res.msg,
+                position: 'topRight'
+              });
+              return;
+            } else {
+              iziToast.success({
+                message: msg,
+                position: 'topRight'
+              });
+            }
+            if( typeof info.reload !='undefined')   {
+                if ( info.reload=="self"){
+                  location.reload();
+                } else info.reload.ajax.reload(null, false);
+              }
+            $('.modal.show').modal('hide');
+          },
+          error: function ( err ){
+            ajaxErrorST(err)
+          }
+        });
+
+
+    }
+  });
+
+}
+function default_form_delete( info ){
+  let title='';
+  if (typeof info.title != 'undefined') title = `[${info.title}] 을(를) 삭제합니다.`;
+  swal({
+      title: '삭제하시겠습니까?',
+      text : title,
+      icon: 'warning',
+      buttons: true,
+      dangerMode: true,
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+        $.ajax({
+           url: info.url,
+           method:"POST",
+           data:{delete_id: info.id },
+           dataType:'JSON',
+           success:function(res)
+           {
+             if( res.result =='error'){
+               iziToast.success({
+                 message: res.msg,
+                 position: 'topRight'
+               });
+               return;
+             } else {
+               iziToast.success({
+                 message: '삭제되었습니다.',
+                 position: 'topRight'
+               });
+             }
+             if( typeof info.reload !='undefined')   info.reload.ajax.reload(null, false);
+          },
+           error: function ( err ){
+             ajaxErrorST(err)
+           }
+         });
+      } else {
+      swal('취소되었습니다.');
+      }
+    });
+
+}
+
 </script>
 @yield('script')
 </body>

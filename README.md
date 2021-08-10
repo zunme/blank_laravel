@@ -20,3 +20,14 @@
     https://github.com/yajra/laravel-datatables
 
 # visitor
+
+# query
+room_id, room_no 로 빈 번호 찾기
+    SELECT 
+    1 AS room_no, a.id AS pos_no
+    from test_persons a
+    LEFT JOIN waiting b ON a.id = b.pos_no AND b.room_id = 1 AND b.room_no = 1
+    WHERE a.id <= 5
+    AND b.id IS null
+
+

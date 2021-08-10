@@ -22,6 +22,10 @@ class User extends Authenticatable
         'tel',
         'user_level',
         'password',
+        'parent_id',
+        'rcmnd_code',
+        'gpay',
+        'national',
     ];
 
     /**
@@ -42,4 +46,15 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /*추천인*/
+    public function parent()
+    {
+        return $this->belongsTo(User::class, 'parent_id');
+    }
+
+    public function children()
+    {
+        return $this->hasMany(User::class, 'parent_id');
+    }
 }
