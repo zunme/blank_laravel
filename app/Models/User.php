@@ -16,6 +16,8 @@ class User extends Authenticatable
      *
      * @var array
      */
+    protected $appends =['avail'];
+
     protected $fillable = [
         'user_id',
         'name',
@@ -57,5 +59,8 @@ class User extends Authenticatable
     public function children()
     {
         return $this->hasMany(User::class, 'parent_id');
+    }
+    public function getAvailAttribute(){
+        return $this->points - $this->reservation;
     }
 }

@@ -27,3 +27,11 @@ Route::get('/t', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::group([
+    'middleware' => ['level:user'],
+], function () {
+    Route::get('/room/prc', [App\Http\Controllers\Front\RoomController::class, 'roomPrc']);
+    Route::get('/room/entrance', [App\Http\Controllers\Front\RoomController::class, 'entrance']);
+    Route::get('/room/exit', [App\Http\Controllers\Front\RoomController::class, 'xit']);
+});

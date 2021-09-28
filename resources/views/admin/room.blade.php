@@ -24,7 +24,7 @@
                         <th>입장인원</th>
                         <th>당첨인원</th>
                         <th>입장료</th>
-                        <th>취소수수료(%)</th>
+                        <th>취소수수료</th>
                         <th>당첨금(%)</th>
                         <th>마켓팅수당(%)</th>
                         <th>플랜수당(%)</th>
@@ -102,7 +102,7 @@
                 <div class="input-group mb-2">
                   <input type="text" class="form-control text-right" name="cancellation_fee" value="{{cancellation_fee}}">
                   <div class="input-group-append">
-                    <div class="input-group-text">%</div>
+                    <div class="input-group-text">$</div>
                   </div>
                 </div>
               </div>              

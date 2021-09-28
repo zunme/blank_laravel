@@ -25,6 +25,7 @@
                         <th>국적</th>
                         <th>상태</th>
                         <th>point</th>
+                        <th>가용 point</th>
                         <th>추천인코드</th>
                         <th>추천인</th>
                         <th>추천회원수</th>
@@ -134,6 +135,7 @@ $(document).ready(function() {
                 }
           },
           {"data" : "points"},
+          {"data" : "avail"},
           {"data" : "rcmnd_code"},
 
           {"data" : "parent.email",

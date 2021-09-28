@@ -24,6 +24,10 @@
 
 # visitor
 
+# trait and exception
+    use App\Exceptions\CustomException;
+    use App\Http\Traits\ApiResponser;
+
 # query
 room_id, room_no 로 빈 번호 찾기
     SELECT 
@@ -33,4 +37,5 @@ room_id, room_no 로 빈 번호 찾기
     WHERE a.id <= 5
     AND b.id IS null
 
+# que and job
 

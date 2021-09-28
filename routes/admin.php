@@ -23,6 +23,7 @@ Route::group([
     Route::get('rooms/list', [App\Http\Controllers\Admin\RoomController::class, 'list']);
     Route::post('rooms/save', [App\Http\Controllers\Admin\RoomController::class, 'save']);
 
+    Route::get('test', [App\Http\Controllers\Admin\RoomController::class, 'test']);
 
     Route::group([
         'prefix' => 'setting',

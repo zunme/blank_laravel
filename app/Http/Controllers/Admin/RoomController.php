@@ -12,13 +12,26 @@ use Validator;
 
 use App\Models\Room;
 
+use App\Exceptions\CustomException;
+use App\Http\Traits\RoomsTrait;
+use App\Http\Traits\ApiResponser;
+
+
 class RoomController extends Controller
 {
+    use RoomsTrait;
+    use ApiResponser;
+
     public function __construct()
     {
         $this->middleware('auth');
     }
-
+    public function test(Request $request){
+        /*
+        $this->callQue(1, 1);
+        return;
+      */
+    }
     public function index()
     {
         return view('admin.room');
@@ -46,6 +59,8 @@ class RoomController extends Controller
         ]);
         try{
             $room = Room::updateOrCreate( ['id'=>$request->id], $data );
+            $this->changeUse($room);
+            
             //$room->update( $data);
             //$room->save();
             return response()->json(['result'=>'OK','data'=>$room], 200); 

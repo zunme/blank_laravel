@@ -33,7 +33,6 @@ class SendMessage implements ShouldBroadcastNow{
     //채널을 수신할때 받을 데이터
     public function broadcastWith(){
         return [
-            'title'=>'번째 데이터',
             'data'=>$this->data
         ];
     }

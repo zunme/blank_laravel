@@ -1,0 +1,11 @@
+apps:
+  - name: roomplan_que
+    script: artisan
+    exec_mode: fork
+    interpreter: php
+    instances: 1
+    args:
+      - queue:work
+      - database
+      - --tries=5
+      - --sleep=1
